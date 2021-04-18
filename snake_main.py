@@ -6,6 +6,14 @@ import random
 import sys
 import stages
 
+"""
+It is easy to change settings of this simple game.
+For changing color of head, tail, stages background and other properties
+you can change simply their variables below and most of changes 
+will not effect the games' functionality
+
+"""
+
 
 # Usefull functions
 def find(mainlist, item):
@@ -17,6 +25,7 @@ def find(mainlist, item):
             return 1
     return 0
 
+# random color generator
 def color_generator():
     c = []
     for i in range(5):
@@ -25,30 +34,33 @@ def color_generator():
         d = random.randint(0,255)
         c += [(a,b,d)]
     return c
-# find function returns 1 when find the item into mainlist
 
+
+
+# You can use any colors in rgb format instead of random color generator
 # Constants and main pygame desk
 # _co -> color
 c = color_generator()
 
 py.init()
 
+# changeble variables
 speed_const = 8
-#change this
 stage_co = c[0] #(255, 255, 0)
 back_co = c[1] #(0, 180, 0)
 app_co = c[2] #(255, 255, 255)
 head_co = c[3] #(204, 51, 0)
 tail_co = c[4] #(255, 153, 102)
-full_size = [500,550]
-game_size = [500,500]
-stage_lim = [10, 20, 30, 40]
+full_size = [500,550] # try to not change this. Because it may effect levels
+game_size = [500,500] # try to not change this. Because it may effect levels
+stage_lim = [10, 20, 30, 40] # it is limit of score to pass next stage
 
 
-speed = speed_const#don't change this
-way_next_stage = [[150, 0], [160, 0], [170, 0]]
+speed = speed_const # don't change this
+way_next_stage = [[150, 0], [160, 0], [170, 0]] # gate opening index to going to next stage
 
 
+#some settings
 screen = py.display.set_mode(full_size)
 py.display.set_caption("funny snake")
 clock = py.time.Clock()
