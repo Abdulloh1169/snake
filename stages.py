@@ -1,5 +1,16 @@
 #!path/Scripts/python.exe
+"""
+Every stage simply returns the list of positions of stage walls.
+[0, 0] means 1 rectangular wall cell in position x1:0 | y1:0 | x2:10 | y2:10
+
+
+User can easly creat his/her stage function or stage generator.
+After creating function add it to 'Snake.find_stage' function instead of 'random_2'
+
+"""
+
 import random
+
 
 def stage1(size=(500,500)):
     a, b, c, d = [], [], [], []
@@ -40,6 +51,9 @@ def stage3(size=(500,500)):
             c += [[i, int(size[0]/20)*10]]
     return a+b+c+d
 
+
+# this function randomly generates the stage walls
+# and random_2 is more optimal and better than random_
 def random_2(size = (500, 500)):
     a = stage1(size)
     check = True
@@ -74,10 +88,12 @@ def random_2(size = (500, 500)):
     return a
 
 
+# this function also randomly generates the stage but there is some problems
+# in position of walls
 def random_(size=(500,500)):
     a = stage1(size)
     b = [] # to save all walls
-    sum_wall = random.randint(7,15)
+    sum_wall = random.randint(7,15) # minimal number of walls: 7, maximum number of walls: 15
     for i in range(sum_wall):
         c = [] # empty list to save one wall
         len_wall = random.randint(5, 20)
@@ -99,6 +115,8 @@ def random_(size=(500,500)):
     return a+b
 
 
+
+#for drawing walls for testing
 def test(pos, size=(500,500)):
     import pygame as py
     green = (255, 0, 0)
@@ -110,5 +128,6 @@ def test(pos, size=(500,500)):
     
 
 if __name__ == '__main__':
+    # for testing random_2 function run this programm
     a = random_2()
     test(a)
